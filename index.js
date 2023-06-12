@@ -1,6 +1,9 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 
+const mainPage = ({ name, location, language, linkedIn, gitHub }) =>
+    ``;
+
 inquirer    
     .createPromptModule([
         {
@@ -30,5 +33,8 @@ inquirer
         },
     ])
     .then((answers) => {
+        const mainPageContent = mainPage(answers);
 
-    })
+        fs.writeFile('index.html', mainPageContent, (err) =>
+            err ? console.log(err) : console.log('Success!'));
+    });
